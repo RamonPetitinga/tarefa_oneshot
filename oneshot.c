@@ -3,7 +3,7 @@
 #include "hardware/timer.h"
 
 // Definição dos pinos dos LEDs e botão.
-#define BUTTON_PIN 5
+#define botao_a 5
 #define led_vermelho 11
 #define led_verde 12
 #define led_azul 13
@@ -74,12 +74,12 @@ int main()
     gpio_put(led_azul, 0);
 
     // Inicialização do botão.
-    gpio_init(BUTTON_PIN);
-    gpio_set_dir(BUTTON_PIN, GPIO_IN);
-    gpio_pull_up(BUTTON_PIN);
+    gpio_init(botao_a);
+    gpio_set_dir(botao_a, GPIO_IN);
+    gpio_pull_up(botao_a);
 
     // Interrupção provocada pelo botão.
-    gpio_set_irq_enabled_with_callback(BUTTON_PIN, GPIO_IRQ_EDGE_FALL, true, &gpio_irq_handler);
+    gpio_set_irq_enabled_with_callback(botao_a, GPIO_IRQ_EDGE_FALL, true, &gpio_irq_handler);
 
     // Loop principal para rodar infinitamente.
     while (true)
